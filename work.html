@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Work</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #header {
+            background-image: url(./img/電繪/背景.png);
+        }
+
+        /* 可選：微調下拉選單動畫 */
+        .work-dropdown.active .dropdown-list {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrap">
+        <div id="header">
+
+            <!-- 導覽列 -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">主頁</a></li>
+                    <li><a href="about.html">關於我</a></li>
+
+                    <li class="dropdown">
+                        <a href="#">作品 ▾</a>
+                        <ul class="dropdown-content">
+                            <li><a href="flat.html">平面設計</a></li>
+                            <li><a href="Business.html">商業設計</a></li>
+                            <li><a href="ZD.html">3D Maya</a></li>
+                            <li><a href="project.html">專案與電繪</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="contact.html">聯絡方式</a></li>
+                </ul>
+            </nav>
+
+            <div class="section-label fade-in">WORK</div>
+
+            <!-- 作品網格 -->
+            <div class="work-grid fade-in">
+
+                <a href="flat.html" class="work-item">
+                    <p class="p1"><img src="./img/PS/中秋.png" alt=""></p>
+                    <div class="info">平面設計</div>
+                </a>
+
+                <a href="Business.html" class="work-item">
+                    <p class="p2"><img src="./img/Ai/虛擬偶像票根-02.png" alt=""></p>
+                    <div class="info">商業設計</div>
+                </a>
+
+                <a href="ZD.html" class="work-item">
+                    <p class="p3"><img src="./img/mamy/03.jpg" alt=""></p>
+                    <div class="info">3D maya</div>
+                </a>
+
+                <a href="project.html" class="work-item">
+                    <p class="p4"><img src="./img/電繪/插圖/10.雙人舞.jpg" alt="專案"></p>
+                    <div class="info">專案與電腦繪圖</div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const dropdown = document.querySelector("nav li.dropdown");
+            const trigger = dropdown.querySelector("a");
+            const menu = dropdown.querySelector(".dropdown-content");
+
+            // 點擊「作品 ▾」展開/收起
+            trigger.addEventListener("click", (e) => {
+                e.preventDefault(); // 防止跳頁
+                menu.style.display = (menu.style.display === "block") ? "none" : "block";
+            });
+
+            // 點擊其他地方收回
+            document.addEventListener("click", (e) => {
+                if (!dropdown.contains(e.target)) {
+                    menu.style.display = "none";
+                }
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 全站字體與背景 ----------------------------------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Noto Sans TC", sans-serif;
+            background-size: cover;
+            color: white;
+            background-image: url(./img/電繪/背景.png);
+            background-size: cover;
+            background-repeat: repeat-y;
+            background-attachment: fixed;
+            /* 可讓背景固定不動 */
+        }
+
+        /* 粉色標籤 ------------------------------------------ */
+        .section-label {
+            position: relative;
+            display: inline-block;
+            padding: 18px 80px;
+            background-color: #ffb3d9;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+            margin: 20px;
+        }
+
+        /* 背景 ------------------------------------------ */
+        #header {
+            width: 100%;
+            height: 100vh;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* ⭐ 整個區域覆蓋，可裁切 */
+
+            position: relative;
+        }
+
+        #header nav {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            z-index: 999;
+            /* 絕對不會被蓋住 */
+        }
+
+        #header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        #header nav a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            /* 粗體 */
+            color: rgb(255, 255, 255);
+            /* 白色 */
+            font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+            /* 圓體 / 黑體 */
+        }
+
+        #header nav a:hover {
+            opacity: 0.7;
+        }
+
+        .carousel {
+            width: 100%;
+            max-width: 700px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-track img {
+            width: 100%;
+            height: auto;
+            /* 高度自動 */
+            object-fit: contain;
+        }
+
+        /* 按鈕 */
+        .carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            font-size: 30px;
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .carousel .prev {
+            left: 10px;
+        }
+
+        .carousel .next {
+            right: 10px;
+        }
+
+        .carousel button:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrap">
+        <div id="header">
+
+            <!-- 導覽列 -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">主頁</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="work.html">作品</a></li>
+                    <li><a href="contact.html">聯絡方式</a></li>
+                </ul>
+            </nav>
+
+            <div class="section-label fade-in">3D Maya</div>
+
+            <div class="carousel">
+
+                <div class="carousel-track">
+                    <img src="./img/mamy/01.jpg" class="active">
+                    <img src="./img/mamy/02.jpg">
+                    <img src="./img/mamy/03.jpg">
+                    <img src="./img/mamy/咖啡杯.jpg">
+                    <img src="./img/mamy/Knife.jpg">
+                    <img src="./img/mamy/ARMOR.jpg">
+                    <img src="./img/mamy/ARMOR2.jpg">
+                    <img src="./img/mamy/ARMOR3.jpg">
+                    <img src="./img/mamy/M1.jpg">
+                    <img src="./img/mamy/m2.jpg">
+                    <img src="./img/mamy/m3.jpg">
+                    <img src="./img/mamy/m4.jpg">
+                    <img src="./img/mamy/m5.jpg">
+                    <img src="./img/mamy/m6.jpg">
+                </div>
+
+                <button class="prev">‹</button>
+                <button class="next">›</button>
+            </div>
+            <div id="lightbox" class="lightbox">
+                <img id="lightbox-img">
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const images = document.querySelectorAll('.carousel-track img');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+
+        let index = 0;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            index = (index + 1) % images.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            index = (index - 1 + images.length) % images.length;
+            updateCarousel();
+        });
+
+        // 點圖片開大圖
+        document.querySelectorAll('.carousel-track img').forEach(img => {
+            img.addEventListener('click', () => {
+                document.getElementById('lightbox-img').src = img.src;
+                document.getElementById('lightbox').style.display = 'flex';
+            });
+        });
+
+        // 點任意地方關閉
+        document.getElementById('lightbox').addEventListener('click', () => {
+            document.getElementById('lightbox').style.display = 'none';
+        });
+
+    </script>
+
+</body>
+
+</html>

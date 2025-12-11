@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSP 電腦繪圖</title>
+
+    <style>
+        /* 全站字體與背景 ----------------------------------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Noto Sans TC", sans-serif;
+            background-size: cover;
+            color: white;
+        }
+
+        /* 粉色標籤 ------------------------------------------ */
+        .section-label {
+            position: relative;
+            display: inline-block;
+            padding: 18px 80px;
+            background-color: #ffb3d9;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+            margin: 20px;
+        }
+
+        /* 背景區域 ------------------------------------------ */
+        #header {
+            background-image: url(./img/電繪/背景.png);
+            width: 100%;
+            min-height: 100vh;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            padding-bottom: 80px;
+        }
+
+        /* 導覽列 -------------------------------------------- */
+        #header nav {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            z-index: 999;
+        }
+
+        #header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        #header nav a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+
+        #header nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* ======✨ 作品卡片區 ====== */
+        .wrapper {
+            margin-top: 120px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            width: 310px;
+            height: 540px;
+            background: #ffffff20;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            backdrop-filter: blur(3px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(80%);
+        }
+
+        /* 灰色遮罩層 */
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            /* ⭐ 灰黑半透明遮罩，可調 */
+            z-index: 1;
+            /* ⭐ 遮罩在圖片上面，但在文字下面 */
+        }
+
+        /* 讓文字和按鈕蓋在遮罩之上 */
+        .card-title,
+        .view-btn {
+            position: absolute;
+            z-index: 2;
+            /* ⭐ 文字層在最上面 */
+        }
+
+        /* 標題位置 */
+        .card-title {
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 26px;
+            text-shadow: 0 0 5px black;
+        }
+
+        /* View 按鈕 */
+        .view-btn {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 28px;
+            border: 1px solid white;
+            border-radius: 10px;
+            color: white;
+            background: transparent;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            /* ⭐ 加這行避免超連結底線 */
+            z-index: 2;
+        }
+
+
+        .view-btn:hover {
+            background: white;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrap">
+        <div id="header">
+
+            <!-- 導覽列 -->
+            <nav>
+                <ul>
+                    <li><a href="index.html">主頁</a></li>
+                    <li><a href="about.html">關於我</a></li>
+                    <li><a href="work.html">作品</a></li>
+                    <li><a href="contact.html">聯絡方式</a></li>
+                </ul>
+            </nav>
+
+            <!-- 粉色標籤 -->
+            <div class="section-label">CSP —— 電腦繪圖</div>
+
+            <!-- ✨ 作品展示區 -->
+            <div class="wrapper">
+
+                <!-- 卡片1：四格漫畫 → comics.html -->
+                <div class="card">
+                    <img src="./img/電繪/Q版四格漫畫/001.png" alt="">
+                    <div class="card-title">Q版四格漫畫</div>
+                    <a class="view-btn" href="comics.html">View</a>
+                </div>
+
+                <!-- 卡片2：小說 → novel.html -->
+                <div class="card">
+                    <img src="./img/電繪/jpg/月櫻（紫）6.jpg" alt="">
+                    <div class="card-title">小說專題</div>
+                    <a class="view-btn" href="novel.html">View</a>
+                </div>
+
+                <!-- 卡片3：插圖 → illustration.html -->
+                <div class="card">
+                    <img src="./img/電繪/插圖/4.降雨小僧2.jpg" alt="">
+                    <div class="card-title">電腦繪圖</div>
+                    <a class="view-btn" href="illustration.html">View</a>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

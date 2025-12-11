@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品展示</title>
+    <style>
+        /* ------------------- 全站字體與背景 ------------------- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Noto Sans TC", sans-serif;
+            background-image: url(./img/電繪/背景.png);
+            background-size: cover;
+            background-repeat: repeat-y;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        /* ------------------- 粉色標籤 ------------------- */
+        .section-label {
+            position: relative;
+            display: inline-block;
+            padding: 18px 80px;
+            background-color: #ffb3d9;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
+            margin: 20px;
+            z-index: 5;
+        }
+
+        /* 淡入動畫 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ------------------- Header ------------------- */
+        #header {
+            width: 100%;
+            height: 100vh;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* 導覽列 */
+        #header nav {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            z-index: 999;
+        }
+
+        #header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 40px;
+        }
+
+        #header nav a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+            font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+        }
+
+        #header nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* ------------------- 輪播 ------------------- */
+        .carousel {
+            max-width: 700px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-track img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            cursor: pointer;
+        }
+
+        /* 輪播按鈕 */
+        .carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            font-size: 30px;
+            padding: 5px 15px;
+            cursor: pointer;
+            border-radius: 6px;
+            z-index: 10;
+        }
+
+        .carousel .prev {
+            left: 5px;
+        }
+
+        .carousel .next {
+            right: 5px;
+        }
+
+        .carousel button:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* ------------------- 燈箱 ------------------- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        /* ------------------- RWD ------------------- */
+        @media (max-width: 900px) {
+            .carousel {
+                max-width: 90%;
+            }
+
+            .section-label {
+                font-size: 30px;
+                padding: 12px 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <!-- 導覽列 -->
+        <nav>
+            <ul>
+                <li><a href="index.html">主頁</a></li>
+                <li><a href="about.html">關於我</a></li>
+                <li><a href="work.html">作品</a></li>
+                <li><a href="contact.html">聯絡方式</a></li>
+            </ul>
+        </nav>
+
+        <!-- 粉色標籤 -->
+        <div class="section-label fade-in">商業設計</div>
+
+        <!-- 輪播 -->
+        <div class="carousel">
+            <div class="carousel-track">
+                <img src="./img/PS/AC2B31秋季旅遊導覽.jpg" class="active">
+                <img src="./img/Ai/3D立體手機 (1).png">
+                <img src="./img/Ai/手機DM.png">
+                <img src="./img/Ai/Chill café-02.png">
+                <img src="./img/Ai/練習_工作區域 1.png">
+                <img src="./img/Ai/練習_工作區域 2.png">
+                <img src="./img/Ai/糖葫蘆_工作區域 1_工作區域 1.png">
+                <img src="./img/Ai/海報-02.png">
+                <img src="./img/Ai/水果海報-芒果3.png">
+                <img src="./img/Ai/水果海報-草莓.png">
+                <img src="./img/Ai/水果海報-哈密瓜-04.png">
+                <img src="./img/Ai/水果海報-櫻桃-05.png">
+                <img src="./img/Ai/蛋糕_工作區域 1.png">
+                <img src="./img/Ai/蛋糕_工作區域 2.png">
+                <img src="./img/Ai/蛋糕_工作區域 3.png">
+                <img src="./img/Ai/蛋糕_工作區域 4.png">
+                <img src="./img/Ai/蛋糕_工作區域 2-06.png">
+                <img src="./img/Ai/虛擬偶像海報_工作區域 1.png">
+                <img src="./img/Ai/虛擬偶像票根-02.png">
+                <img src="./img/Ai/九宮格_工作區域 1.png">
+                <img src="./img/Ai/蛋糕盒包裝_工作區域 1.png">
+                <img src="./img/Ai/千銀香水包裝設計（白底）_工作區域 1.png">
+                <img src="./img/Ai/月櫻香水包裝設計（白底）_工作區域 1.png">
+                <img src="./img/Ai/包裝_工作區域 1.png">
+                <img src="./img/Ai/側_工作區域 1.png">
+                <img src="./img/Ai/和果子.png">
+                <img src="./img/Ai/聖誕-01.png">
+                <img src="./img/Ai/聖誕海報-01.png">
+            </div>
+            <button class="prev">‹</button>
+            <button class="next">›</button>
+        </div>
+
+        <!-- 燈箱 -->
+        <div id="lightbox" class="lightbox">
+            <img id="lightbox-img">
+        </div>
+    </div>
+
+    <script>
+        // ------------------- 粉色標籤淡入 -------------------
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.fade-in').forEach(el => el.classList.add('show'));
+        });
+
+        // ------------------- 輪播 -------------------
+        const track = document.querySelector('.carousel-track');
+        const images = document.querySelectorAll('.carousel-track img');
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let index = 0;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            index = (index + 1) % images.length;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            index = (index - 1 + images.length) % images.length;
+            updateCarousel();
+        });
+
+        // ------------------- 燈箱 -------------------
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>
